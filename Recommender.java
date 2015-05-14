@@ -4,8 +4,7 @@ import java.util.HashMap;
 public class Recommender {
 
 	Tester tester;
-	private double weightOfPerson;
-	private double otherWeight;
+	private double a, b, c;
 	private double allMovieAverage;
 	private double allPersonAverage;
 	private double rating;
@@ -14,14 +13,12 @@ public class Recommender {
 
 	public Recommender(Tester t) {
 		tester = t;
-		weightOfPerson=.50;
-		otherWeight=1-weightOfPerson;
-		rating=2.5;
+		a=.25;
+		b=.5;
+		c=.25;
+		rating=5;
 	}
-	public void setWeights(double weightOfPerson){
-		this.weightOfPerson=weightOfPerson;
-		otherWeight=1-weightOfPerson;
-	}
+	
 	public void setRating(double rating){
 		this.rating= rating;
 	}
@@ -34,7 +31,13 @@ public class Recommender {
 	// NOTE: to avoid cheating you must re-set any variables you use here
 	// before you calculate their new values.
 	// calculate stuff, with this data
-
+	public void setAll(double a, double b, double c){
+		this.a=a;
+		this.b=b;
+		this.c=c;
+		
+		
+	}
 	public void init() {
 	
 			
@@ -56,10 +59,22 @@ public class Recommender {
 
 	// edit the thing all the time
 	public double predictRating(Person person, Movie movie) {
+	
+		
+		
+		
 		return rating;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 
-public final double magicRating = 3.5;	
+public final double magicRating = 3.55;	
 public final int child = -1;
 public final int teen = 0;
 public final int youngAdult = 1;
