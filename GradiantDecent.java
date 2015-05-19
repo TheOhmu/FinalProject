@@ -84,6 +84,7 @@ public class GradiantDecent {
 			double e4 = error(a - 2 * change, b + change, c + change);
 			double e5 = error(a + change, b - 2 * change, c + change);
 			double e6 = error(a + change, b + change, c - 2 * change);
+
 			// adding to 1 subtract from 1
 			double e7 = error(a + change, b - change, c);
 			double e8 = error(a + change, b, c - change);
@@ -102,18 +103,32 @@ public class GradiantDecent {
 		return min;
 	}
 
-	public void set(double x, double y, double z, double d, double e, double f,
-			double g, double h, double i, double j, double k, double l,
+	public void set(double e1, double e2, double e3, double e4, double e5, double e6,
+			double e7, double e8, double e9, double e10, double e11, double e12,
 			double min, double change, double a, double b, double c) {
 
 		recommender.setAll(a, b, c);
-		
-		
-		
-		
-		
-		
-		
+		if(min == e1){ 
+			recommender.setAll(a + 2 * change, b - change, c - change);
+			a = a+2*change; b=b-change;c=c-change;
+			System.out.print( "The minimum error is " + min +"  Value of a:" + a + "  Value of b:"+ b + "  Value of c:" + c);
+		}
+		if(min == e2){
+			recommender.setAll(a - change, b + 2 * change, c - change);
+			a=a-change; b=b+2*change; c=c-change;
+			System.out.print( "The minimum error is " + min +"  Value of a:" + a + "  Value of b:"+ b + "  Value of c:" + c);
+			
+		}
+		if(min == e3) recommender.setAll(a - change, b - change, c + 2 * change);
+		if(min == e4) recommender.setAll(a - 2 * change, b + change, c + change);
+		if(min == e5) recommender.setAll(a + change, b - 2 * change, c + change);
+		if(min == e6) recommender.setAll(a + change, b + change, c - 2 * change);
+		if(min == e7) recommender.setAll(a + change, b - change, c);
+		if(min == e8) recommender.setAll(a + change, b, c - change);
+		if(min == e9) recommender.setAll(a - change, b + change, c);
+		if(min == e10) recommender.setAll(a, b + change, c - change);
+		if(min == e11) recommender.setAll(a - change, b, c + change);
+		if(min == e12) recommender.setAll(a, b - change, c + change);
 		
 		
 		
