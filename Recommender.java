@@ -117,7 +117,7 @@ public class Recommender {
 	// edit the thing all the time
 	public double predictRating(Person person, Movie movie) {
 
-		return a*averageP(person)+ b*averageM(movie)+c*averageGenre(movie);
+		return 1.0/3*averageP(person)+1.0/3*averageM(movie)+1.0/3*averageGenre(movie);
 	}
 
 	public double getAverage(ArrayList<Rating> a) {

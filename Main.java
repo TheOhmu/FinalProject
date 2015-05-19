@@ -22,14 +22,15 @@ public class Main {
 		// separates the data into.
 		
 		// tester.DISPLAY = true;			// Display predictions you got wrong
-		tester.threshold = 0;					// How far off does your predictor have to be to display
+		double error=(tester.crossValidate("c:\\data\\recommender\\allratings.txt", 5));
+		/*tester.threshold = 0;					// How far off does your predictor have to be to display
 		method.setMin(tester.crossValidate("c:\\data\\recommender\\allratings.txt", 5));															// a prediction as incorrect?
 		method.findMin(.025);
 			
 			
 		
 		
-		double error= method.getMin();
+		double error= method.getMin();*/
 		// -------------------------------------------------------------------------
 		
 		System.out.println("Your error is: " + error);
