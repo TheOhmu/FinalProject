@@ -24,7 +24,7 @@ public class Main {
 		// tester.DISPLAY = true;			// Display predictions you got wrong
 		tester.threshold = 0;					// How far off does your predictor have to be to display
 		method.setMin(tester.crossValidate("c:\\data\\recommender\\allratings.txt", 5));															// a prediction as incorrect?
-		method.findMin();
+		method.findMin(.025);
 			
 			
 		
