@@ -72,6 +72,16 @@ public class GradiantDecent {
 			a=recomender.getA();
 			b=recomender.getB();
 			c=recomender.getC();
+		
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			// change a
 			recomender.setAll(a+2*change, b-change, c-change);
 			errorA=tester.crossValidate("c:\\data\\recommender\\allratings.txt", 5);
@@ -103,6 +113,7 @@ public class GradiantDecent {
 			errorCA=tester.crossValidate("c:\\data\\recommender\\allratings.txt", 5);
 			System.out.println(" "+ errorCA);
 			
+			
 			double maxDiff=maxFour(min-errorA, min-errorB,min-errorC, 0);// the last one is minError-minError
 			if (maxDiff==0) return min;
 			if (maxDiff==(min-errorA))temp=errorA;
@@ -113,10 +124,18 @@ public class GradiantDecent {
 		System.out.println("a:"+recomender.getA()+" b:"+recomender.getB()+" c:"+recomender.getC());
 		return min;
 	}
+	public double error(double a, double b, double c, double change){
+		recomender.setAll(a,b,c);
+		double error=tester.crossValidate("c:\\data\\recommender\\allratings.txt", 5); 
+		System.out.print(error+" ");
+		return error;
+				
+	}
 	public void printABC(double a, double b, double c, String increased){
 		System.out.println("a ="+ a+ " b ="+ b+" c ="+ c+ " "+ increased);
 		
 	}
+
 	public double minFour(double a, double b,  double c, double d){
 		if (Math.min(Math.min(a,b), Math.min(c,d))==a) return a;
 		if (Math.min(Math.min(a,b), Math.min(c,d))==b) return b;
