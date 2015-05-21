@@ -10,8 +10,6 @@ public class Movie {
 	private ArrayList<String> tags;
 	private HashMap<Movie, Double> similarMovies;
 	
-	
-	
 	public HashMap<Movie, Double> getSimilarMovies() {
 		return similarMovies;
 	}
@@ -85,7 +83,6 @@ public class Movie {
 		ret += "\ntags: " + tags;
 		ret += "\nratings: " + ratings.size() + " total ratings\n";
 		ret += ratings.toString();
-		
 		return ret;
 	}
 

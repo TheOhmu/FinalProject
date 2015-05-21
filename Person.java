@@ -6,7 +6,6 @@ public class Person {
 	private String occupation, zip;
 	private ArrayList<Rating> ratings;
 	
-
 	public Person(int id, int age, int gender, String occupation, String zip) {
 		this.id = id;
 		this.age = age;
@@ -14,8 +13,6 @@ public class Person {
 		this.occupation = occupation;
 		this.zip = zip;
 		ratings = new ArrayList<Rating>();
-		
-
 	}
 
 	public ArrayList<Rating> getRatings() {
@@ -84,7 +81,6 @@ public class Person {
 		ret += "\nzip_code:\t\t" + zip;
 		ret += "\nratings: " + ratings.size() + " total ratings\n";
 		ret += ratings.toString();
-
 		return ret;
 	}
 
