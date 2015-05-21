@@ -62,8 +62,8 @@ public class GradiantDecent {
 	public double findMin(double change) {
 
 		double temp = 0;
-		double a, b, c;
-		double errorA, errorAB, errorB, errorBC, errorC, errorCA;
+		double weight1, weight2, weight3;
+
 		while (min > temp) {
 			if (temp != 0) {
 				min = temp;
@@ -71,64 +71,57 @@ public class GradiantDecent {
 				System.out.println();
 			}
 
-			a = recommender.getA();
-			b = recommender.getB();
-			c = recommender.getC();
+			weight1 = recommender.getWeight1();
+			weight2 = recommender.getWeight2();
+			weight3 = recommender.getWeight3();
 
 			// adding to 1 subtract from 2
-			double e1 = error(a + 2 * change, b - change, c - change);
-			double e2 = error(a - change, b + 2 * change, c - change);
-			double e3 = error(a - change, b - change, c + 2 * change);
-
+			double e1 = error(weight1 + 2 * change, weight2 - change, weight3 - change);
+			double e2 = error(weight1 - change, weight2 + 2 * change, weight3 - change);
+			double e3 = error(weight1 - change, weight2 - change, weight3 + 2 * change);
+			System.out.println();
+			
 			// adding to 2 subtract from 1
-			double e4 = error(a - 2 * change, b + change, c + change);
-			double e5 = error(a + change, b - 2 * change, c + change);
-			double e6 = error(a + change, b + change, c - 2 * change);
-
+			double e4 = error(weight1 - 2 * change, weight2 + change, weight3 + change);
+			double e5 = error(weight1 + change, weight2 - 2 * change, weight3 + change);
+			double e6 = error(weight1 + change, weight2 + change, weight3 - 2 * change);
+			System.out.println();
 			// adding to 1 subtract from 1
-			double e7 = error(a + change, b - change, c);
-			double e8 = error(a + change, b, c - change);
+			double e7 = error(weight1 + change, weight2 - change, weight3);
+			double e8 = error(weight1 + change, weight2, weight3 - change);
 
-			double e9 = error(a - change, b + change, c);
-			double e10 = error(a, b + change, c - change);
+			double e9 = error(weight1 - change, weight2 + change, weight3);
+			double e10 = error(weight1, weight2 + change, weight3 - change);
 
-			double e11 = error(a - change, b, c + change);
-			double e12 = error(a, b - change, c + change);
-
+			double e11 = error(weight1 - change, weight2, weight3 + change);
+			double e12 = error(weight1, weight2 - change, weight3 + change);
+			
+			System.out.println();
 			temp = min12(e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12);
 
 		}
-		System.out.println("a:" + recommender.getA() + " b:" + recommender.getB()
-				+ " c:" + recommender.getC());
+		System.out.println("a:" + recommender.getWeight1() + " b:" + recommender.getWeight2()
+				+ " c:" + recommender.getWeight3());
 		return min;
 	}
 
 	public void set(double e1, double e2, double e3, double e4, double e5, double e6,
 			double e7, double e8, double e9, double e10, double e11, double e12,
-			double min, double change, double a, double b, double c) {
+			double min, double change, double weight1, double weight2, double weight3) {
 
-		recommender.setAll(a, b, c);
-		if(min == e1){ 
-			recommender.setAll(a + 2 * change, b - change, c - change);
-			a = a+2*change; b=b-change;c=c-change;
-			System.out.print( "The minimum error is " + min +"  Value of a:" + a + "  Value of b:"+ b + "  Value of c:" + c);
-		}
-		if(min == e2){
-			recommender.setAll(a - change, b + 2 * change, c - change);
-			a=a-change; b=b+2*change; c=c-change;
-			System.out.print( "The minimum error is " + min +"  Value of a:" + a + "  Value of b:"+ b + "  Value of c:" + c);
-			
-		}
-		if(min == e3) recommender.setAll(a - change, b - change, c + 2 * change);
-		if(min == e4) recommender.setAll(a - 2 * change, b + change, c + change);
-		if(min == e5) recommender.setAll(a + change, b - 2 * change, c + change);
-		if(min == e6) recommender.setAll(a + change, b + change, c - 2 * change);
-		if(min == e7) recommender.setAll(a + change, b - change, c);
-		if(min == e8) recommender.setAll(a + change, b, c - change);
-		if(min == e9) recommender.setAll(a - change, b + change, c);
-		if(min == e10) recommender.setAll(a, b + change, c - change);
-		if(min == e11) recommender.setAll(a - change, b, c + change);
-		if(min == e12) recommender.setAll(a, b - change, c + change);
+		
+		if(min == e1) recommender.setAll(weight1 + 2 * change, weight2 - change, weight3 - change);
+		if(min == e2) recommender.setAll(weight1 - change, weight2 + 2 * change, weight3 - change);
+		if(min == e3) recommender.setAll(weight1 - change, weight2 - change, weight3 + 2 * change);
+		if(min == e4) recommender.setAll(weight1 - 2 * change, weight2 + change, weight3 + change);
+		if(min == e5) recommender.setAll(weight1 + change, weight2 - 2 * change, weight3 + change);
+		if(min == e6) recommender.setAll(weight1 + change, weight2 + change, weight3 - 2 * change);
+		if(min == e7) recommender.setAll(weight1 + change, weight2 - change, weight3);
+		if(min == e8) recommender.setAll(weight1 + change, weight2, weight3 - change);
+		if(min == e9) recommender.setAll(weight1 - change, weight2 + change, weight3);
+		if(min == e10) recommender.setAll(weight1, weight2 + change, weight3 - change);
+		if(min == e11) recommender.setAll(weight1 - change, weight2, weight3 + change);
+		if(min == e12) recommender.setAll(weight1, weight2 - change, weight3 + change);
 		
 		
 		

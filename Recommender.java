@@ -4,15 +4,15 @@ import java.util.HashMap;
 public class Recommender {
 
 	Tester tester;
-	private double a, b, c;
+	private double weight1, weight2, weight3;
 	private HashMap<String, Double> genres= new HashMap<String, Double>();
 	private double rating;
 
 	public Recommender(Tester t) {
 		tester = t;
-		a = 1.0/3;
-		b = 1.0/3;
-		c = 1.0/3;
+		weight1 = .30;
+		weight2 = .30;
+		weight3 = .40;
 		rating = 5;
 	}
 
@@ -31,22 +31,22 @@ public class Recommender {
 	// before you calculate their new values.
 	// calculate stuff, with this data
 	public void setAll(double a, double b, double c) {
-		this.a = a;
-		this.b = b;
-		this.c = c;
+		this.weight1 = a;
+		this.weight2 = b;
+		this.weight3 = c;
 
 	}
 
-	public double getA() {
-		return a;
+	public double getWeight1() {
+		return weight1;
 	}
 
-	public double getB() {
-		return b;
+	public double getWeight2() {
+		return weight2;
 	}
 
-	public double getC() {
-		return c;
+	public double getWeight3() {
+		return weight3;
 	}
 
 	public void init() {
@@ -69,12 +69,7 @@ public class Recommender {
 		genres.put("Thriller",averageGenre(fillGenre("Thriller")));
 		genres.put("War",averageGenre(fillGenre("War")));
 		genres.put("Western" ,averageGenre(fillGenre("Western")));
-		
-		
-		
-		
-		
-		
+				
 		
 		
 	}
@@ -117,7 +112,7 @@ public class Recommender {
 	// edit the thing all the time
 	public double predictRating(Person person, Movie movie) {
 
-		return a*averageP(person)+b*averageM(movie)+c*averageGenre(movie);
+		return weight1*averageP(person)+weight2*averageM(movie)+weight3*averageGenre(movie);
 	}
 
 	public double getAverage(ArrayList<Rating> a) {
