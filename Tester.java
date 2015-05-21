@@ -14,7 +14,6 @@ public class Tester {
 
 	private final String usersfile = "c:\\data\\recommender\\users.txt";
 	private final String itemsfile = "c:\\data\\recommender\\items.txt";
-
 	private ArrayList<Rating> allRatings, trainingRatings;
 	private HashMap<Integer, Person> people_ids;
 	private HashMap<Integer, Movie> movie_ids;
@@ -44,7 +43,6 @@ public class Tester {
 		try {
 			scanner = new Scanner(new FileReader(usersfile));
 			scanner.useDelimiter("\n");
-
 			String line;
 			while (scanner.hasNext()) {
 				line = scanner.next();
@@ -64,19 +62,16 @@ public class Tester {
 		try {
 			scanner = new Scanner(new FileReader(itemsfile));
 			scanner.useDelimiter("\n");
-
 			String line;
 			while (scanner.hasNext()) {
 				line = scanner.next();
 				String[] args = line.split("\\|");
-
 				ArrayList<String> tags = new ArrayList<String>();
 				for (int i = 3; i < args.length; i++) {
 					if (args[i].equals("1")) {
 						tags.add(tagList[i - 5]);
 					}
 				}
-
 				int movie_id = Integer.parseInt(args[0]);
 				String movie_name = args[1];
 				
@@ -290,8 +285,7 @@ public class Tester {
 		this.trainingRatings.add(r);
 	}
 
-	// accepts a String array containing person_id, movie_id, and rating (0 to
-	// 5)
+	// accepts a String array containing person_id, movie_id, and rating (0 to 5)
 	private void addTrainingRating(String... args) {
 		int person_id, movie_id, rating;
 		person_id = Integer.parseInt(args[0]);

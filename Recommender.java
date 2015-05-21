@@ -69,10 +69,8 @@ public class Recommender {
 		genres.put("Thriller",averageGenre(fillGenre("Thriller")));
 		genres.put("War",averageGenre(fillGenre("War")));
 		genres.put("Western" ,averageGenre(fillGenre("Western")));
-				
-		
-		
 	}
+	
 	public ArrayList<Movie> fillGenre(String s){
 		ArrayList<Movie> genre= new ArrayList<Movie>();
 		for (Movie m: tester.getAllMovies())
@@ -81,6 +79,7 @@ public class Recommender {
 			}
 		return genre;	
 	}
+	
 	public double averageGenre(ArrayList<Movie> all){
 		int sum=0;
 		double total=0;
@@ -89,7 +88,7 @@ public class Recommender {
 			total+=getAverage(m.getRatings());	
 		}
 		if (sum!=0) return total/sum;
-		else return magicRating;
+		else 		return magicRating;
 		
 		
 		
@@ -104,14 +103,12 @@ public class Recommender {
 				total++;
 			}
 		}
-		if (total != 0)
-			return sum / total;
-		return magicRating;
+		if (total != 0)	return sum / total;
+						return magicRating;
 	}
 
 	// edit the thing all the time
 	public double predictRating(Person person, Movie movie) {
-
 		return weight1*averageP(person)+weight2*averageM(movie)+weight3*averageGenre(movie);
 	}
 
@@ -121,23 +118,18 @@ public class Recommender {
 		for (Rating r : a) {
 			total += r.getRating();
 			sum++;
-
 		}
-		if (sum != 0)
-			return total / sum;
-		else
-			return magicRating;
+		if (sum != 0)	return total / sum;
+		else			return magicRating;
 
 	}
 
 	public double averageP(Person p) {
 		return getAverage(p.getRatings());
-
 	}
 
 	public double averageM(Movie m) {
 		return getAverage(m.getRatings());
-
 	}
 
 	public double averageGenre(Movie m) {
