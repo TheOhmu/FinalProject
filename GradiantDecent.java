@@ -32,6 +32,7 @@ public class GradiantDecent {
 				System.out.println("new min " + min);
 				System.out.println();
 			}
+			
 			// the upper check
 			double initialRating = recommender.getRating();
 			recommender.setRating(initialRating - change);
@@ -46,10 +47,8 @@ public class GradiantDecent {
 			minRating = initialRating;
 
 			// changing the rating
-			if (Math.min(error1, error2) == error1)
-				recommender.setRating(initialRating - change);
-			else
-				recommender.setRating(initialRating + change);
+			if (Math.min(error1, error2) == error1) recommender.setRating(initialRating - change);
+			else recommender.setRating(initialRating + change);
 
 			temp = minThree(error1, error2, min);
 
@@ -86,17 +85,16 @@ public class GradiantDecent {
 			double e5 = error(weight1 + change, weight2 - 2 * change, weight3 + change);
 			double e6 = error(weight1 + change, weight2 + change, weight3 - 2 * change);
 			System.out.println();
+			
 			// adding to 1 subtract from 1
 			double e7 = error(weight1 + change, weight2 - change, weight3);
 			double e8 = error(weight1 + change, weight2, weight3 - change);
-
 			double e9 = error(weight1 - change, weight2 + change, weight3);
 			double e10 = error(weight1, weight2 + change, weight3 - change);
-
 			double e11 = error(weight1 - change, weight2, weight3 + change);
 			double e12 = error(weight1, weight2 - change, weight3 + change);
-			
 			System.out.println();
+			
 			temp = min12(e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12);
 
 		}
@@ -110,21 +108,18 @@ public class GradiantDecent {
 			double min, double change, double weight1, double weight2, double weight3) {
 
 		
-		if(min == e1) recommender.setAll(weight1 + 2 * change, weight2 - change, weight3 - change);
-		if(min == e2) recommender.setAll(weight1 - change, weight2 + 2 * change, weight3 - change);
-		if(min == e3) recommender.setAll(weight1 - change, weight2 - change, weight3 + 2 * change);
-		if(min == e4) recommender.setAll(weight1 - 2 * change, weight2 + change, weight3 + change);
-		if(min == e5) recommender.setAll(weight1 + change, weight2 - 2 * change, weight3 + change);
-		if(min == e6) recommender.setAll(weight1 + change, weight2 + change, weight3 - 2 * change);
-		if(min == e7) recommender.setAll(weight1 + change, weight2 - change, weight3);
-		if(min == e8) recommender.setAll(weight1 + change, weight2, weight3 - change);
-		if(min == e9) recommender.setAll(weight1 - change, weight2 + change, weight3);
-		if(min == e10) recommender.setAll(weight1, weight2 + change, weight3 - change);
-		if(min == e11) recommender.setAll(weight1 - change, weight2, weight3 + change);
-		if(min == e12) recommender.setAll(weight1, weight2 - change, weight3 + change);
-		
-		
-		
+		if(min == e1) 	recommender.setAll(weight1 + 2 * change, weight2 - change, weight3 - change);
+		if(min == e2) 	recommender.setAll(weight1 - change, weight2 + 2 * change, weight3 - change);
+		if(min == e3) 	recommender.setAll(weight1 - change, weight2 - change, weight3 + 2 * change);
+		if(min == e4) 	recommender.setAll(weight1 - 2 * change, weight2 + change, weight3 + change);
+		if(min == e5)	recommender.setAll(weight1 + change, weight2 - 2 * change, weight3 + change);
+		if(min == e6) 	recommender.setAll(weight1 + change, weight2 + change, weight3 - 2 * change);
+		if(min == e7) 	recommender.setAll(weight1 + change, weight2 - change, weight3);
+		if(min == e8) 	recommender.setAll(weight1 + change, weight2, weight3 - change);
+		if(min == e9) 	recommender.setAll(weight1 - change, weight2 + change, weight3);
+		if(min == e10) 	recommender.setAll(weight1, weight2 + change, weight3 - change);
+		if(min == e11) 	recommender.setAll(weight1 - change, weight2, weight3 + change);
+		if(min == e12) 	recommender.setAll(weight1, weight2 - change, weight3 + change);
 	}
 
 	public double error(double a, double b, double c) {
@@ -142,43 +137,32 @@ public class GradiantDecent {
 
 	}
 
-	public double min12(double a, double b, double c, double d, double e,
-			double f, double g, double h, double i, double j, double k, double l) {
-		return minThree(minFour(a, b, c, d), minFour(e, f, g, h),
-				minFour(i, j, k, l));
+	public double min12(double e1, double e2, double e3, double e4, double e5,
+			double e6, double e7, double e8, double e9, double e10, double e11, double e12) {
+		return minThree(minFour(e1, e2, e3, e4), minFour(e5, e6, e7, e8),
+				minFour(e9, e10, e11, e12));
 
 	}
 
-	public double minFour(double a, double b, double c, double d) {
-		if (Math.min(Math.min(a, b), Math.min(c, d)) == a)
-			return a;
-		if (Math.min(Math.min(a, b), Math.min(c, d)) == b)
-			return b;
-		else if (Math.min(c, d) == c)
-			return c;
-		else
-			return d;
+	public double minFour(double e1, double e2, double e3, double e4) {
+		if (Math.min(Math.min(e1, e2), Math.min(e3, e4)) == e1)	return e1;
+		if (Math.min(Math.min(e1, e2), Math.min(e3, e4)) == e2)	return e2;
+		else if (Math.min(e3, e4) == e3)						return e3;
+		else													return e4;
 
 	}
 
-	public double maxFour(double a, double b, double c, double d) {
-		if (Math.max(Math.max(a, b), Math.max(c, d)) == a)
-			return a;
-		if (Math.max(Math.max(a, b), Math.max(c, d)) == b)
-			return b;
-		else if (Math.max(c, d) == c)
-			return c;
-		else
-			return d;
+	public double maxFour(double e1, double e2, double e3, double e4) {
+		if (Math.max(Math.max(e1, e2), Math.max(e3, e4)) == e1)	return e1;
+		if (Math.max(Math.max(e1, e2), Math.max(e3, e4)) == e2)	return e2;
+		else if (Math.max(e3, e4) == e3)						return e3;
+		else													return e4;
 	}
 
-	public double minThree(double a, double b, double c) {
-		if (Math.min(Math.min(a, b), c) == c)
-			return c;
-		if (Math.min(a, b) == a)
-			return a;
-		else
-			return b;
+	public double minThree(double e1, double e2, double e3) {
+		if (Math.min(Math.min(e1, e2), e3) == e3)				return e3;
+		if (Math.min(e1, e2) == e1)								return e1;
+		else													return e2;
 	}
 
 }
