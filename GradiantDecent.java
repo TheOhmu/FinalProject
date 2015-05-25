@@ -21,7 +21,7 @@ public class GradiantDecent {
 		this.min = min;
 	}
 
-	public void findMin() {
+	public void findMinRating() {
 		double error1 = 0, error2 = 0;
 		double change = .05;
 		double minRating = 0;
@@ -52,13 +52,42 @@ public class GradiantDecent {
 
 			temp = minThree(error1, error2, min);
 
-			System.out.println(error1 + " " + error2);
+			System.out.println("rating: "+ (initialRating-change)+" error: "+error1+ "DOWN"); 
+			System.out.println(	"rating: "+ (initialRating+change)+" error: "+error2+"UP");
 
 		}
 		System.out.println(minRating);
 	}
+	public double findMinOfTwo(double change){
+		int temp=0;
+		double weight1, weight2;
+		while (min>temp){
+			if (temp!=0){
+				min=temp;
+				System.out.println("new min:"+min+"/n");
+			}
+			weight1=recommender.getWeight1();
+			weight2=recommender.getWeight2();
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return 0;
+	}
 
-	public double findMin(double change) {
+	public double findMinOfThree(double change) {
 
 		double temp = 0;
 		double weight1, weight2, weight3;
@@ -102,6 +131,7 @@ public class GradiantDecent {
 				+ " c:" + recommender.getWeight3());
 		return min;
 	}
+	
 
 	public void set(double e1, double e2, double e3, double e4, double e5, double e6,
 			double e7, double e8, double e9, double e10, double e11, double e12,
@@ -166,3 +196,4 @@ public class GradiantDecent {
 	}
 
 }
+//gradient descent equation from all the data points?

@@ -10,10 +10,10 @@ public class Recommender {
 
 	public Recommender(Tester t) {
 		tester = t;
-		weight1 = .30;
-		weight2 = .30;
-		weight3 = .40;
-		rating = 5;
+		weight1 = .1;
+		weight2 = .1;
+		weight3 = .8;
+		rating = 2.5;
 	}
 
 	public void setRating(double rating) {
@@ -109,7 +109,9 @@ public class Recommender {
 
 	// edit the thing all the time
 	public double predictRating(Person person, Movie movie) {
-		return weight1*averageP(person)+weight2*averageM(movie)+weight3*averageGenre(movie);
+		return rating;
+		// return weight1*averageP(person)+weight2*averageM(movie);
+		//return weight1*averageP(person)+weight2*averageM(movie)+weight3*averageGenre(movie);
 	}
 
 	public double getAverage(ArrayList<Rating> a) {

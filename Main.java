@@ -20,12 +20,32 @@ public class Main {
 		
 		tester.threshold = 0;					// How far off does your predictor have to be to display
 		method.setMin(tester.crossValidate("c:\\data\\recommender\\allratings.txt", 5));															// a prediction as incorrect?
-		method.findMin(.05);
 		
-		double error= method.getMin();
+		
+		double error= findMin(1, method);
 		// -------------------------------------------------------------------------
 		
 		System.out.println("Your error is: " + error);
 		System.out.println("(Since it's error, smaller is better.)");
 	}
+	public static double findMin(int type, GradiantDecent method){
+		
+		if (type==rating){// only adjusting the rating 
+			method.findMinRating();
+			
+		}
+		else if (type==weight){// adjusting 2 weights
+			method.findMinOfTwo(.025);
+			
+		}
+		else{// adjusting 3 weights
+			method.findMinOfThree(.025);
+		}
+		
+		
+		return method.getMin();
+	}
+	public static int rating=1;
+	public static int weight=2;
+	
 }
