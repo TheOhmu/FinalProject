@@ -22,24 +22,28 @@ public class Main {
 		method.setMin(tester.crossValidate("c:\\data\\recommender\\allratings.txt", 5));															// a prediction as incorrect?
 		
 		
-		double error= findMin(1, method);
+		double error= findMin(3, method, r);
 		// -------------------------------------------------------------------------
 		
 		System.out.println("Your error is: " + error);
 		System.out.println("(Since it's error, smaller is better.)");
 	}
-	public static double findMin(int type, GradiantDecent method){
+	public static double findMin(int type, GradiantDecent method, Recommender r){
 		
 		if (type==rating){// only adjusting the rating 
+			r.setSystem(rating);
 			method.findMinRating();
 			
 		}
 		else if (type==weight){// adjusting 2 weights
+			r.setSystem(weight);
 			method.findMinOfTwo(.025);
 			
 		}
 		else{// adjusting 3 weights
+			r.setSystem(type);
 			method.findMinOfThree(.025);
+		
 		}
 		
 		
